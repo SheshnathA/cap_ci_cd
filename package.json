@@ -7,14 +7,22 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
-    "express": "^4"
+    "express": "^4",
+    "passport": "^0",
+    "@sap/xssec": "^3"
   },
   "devDependencies": {
-    "sqlite3": "^5",
     "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7"
+    "@sap/cds-dk": "^7",
+    "sqlite3": "^5"
   },
   "scripts": {
     "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": "sqlite",
+      "auth": "xsuaa"
+    }
   }
 }
