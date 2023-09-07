@@ -21,7 +21,12 @@
   },
   "cds": {
     "requires": {
-      "db": "sqlite",
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db.sqlite"
+        }
+      },
       "auth": "xsuaa"
     }
   }
