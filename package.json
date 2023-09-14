@@ -22,13 +22,17 @@
   },
   "cds": {
     "requires": {
-      "db": {
-        "kind": "sql",
-        "credentials": {
-          "database": "db.sqlite"
+      "[production]": {
+        "auth": {
+          "kind": "xsuaa"
+        },
+        "db": {
+          "kind": "hana-cloud"
         }
       },
-      "auth": "xsuaa"
+      "db": {
+        "kind": "sql"
+      }
     }
   }
 }
