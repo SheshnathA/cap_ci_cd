@@ -23,6 +23,15 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: cap_ci_cd-auth
+      - name: cap_ci_cd-db
+
+  - name: cap_ci_cd-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: cap_ci_cd-db
 
 resources:
   - name: cap_ci_cd-auth
@@ -34,3 +43,8 @@ resources:
       config:
         xsappname: cap_ci_cd-${org}-${space}
         tenant-mode: dedicated
+  - name: cap_ci_cd-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
