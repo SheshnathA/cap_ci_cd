@@ -10,7 +10,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu- latest
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
@@ -23,8 +23,14 @@ jobs:
     # See https://blogs.sap.com/2020/07/07/escaping-eintegrity-hell/
     - name: Disable package-lock.json
       run: npm config set package-lock false
+    - name: ADD CF Plugin
+      run: cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    - name: Install CF Plugin
+      run: cf install-plugin multiapps
     - name: Build MTA
       run: mbt build -p cf
+      
+
     - name: Upload Artifact
       uses: actions/upload-artifact@master	
       with:	
@@ -33,7 +39,7 @@ jobs:
         
   deploy:
      needs: build
-     runs-on: ubuntu-18.04
+     runs-on: ubuntu- latest
      steps:
        - name: Download Artifact
          uses: actions/download-artifact@master
