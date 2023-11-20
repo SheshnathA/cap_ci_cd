@@ -10,7 +10,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
@@ -37,7 +37,7 @@ jobs:
         
   deploy:
      needs: build
-     runs-on: ubuntu-18.04
+     runs-on: ubuntu-latest
      steps:
        - name: Download Artifact
          uses: actions/download-artifact@master
@@ -45,7 +45,7 @@ jobs:
            name: mta
            path: ./
        - name: Deploy to Cloud Foundry
-         uses: guerric-p/cf-cli-action@master
+         uses: citizen-of-planet-earth/cf-cli-action@master
          with:
            cf_api: ${{ secrets.CF_API }}
            cf_username: ${{ secrets.CF_USERNAME }}
