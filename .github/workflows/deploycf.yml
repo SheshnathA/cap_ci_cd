@@ -23,8 +23,7 @@ jobs:
     # See https://blogs.sap.com/2020/07/07/escaping-eintegrity-hell/
     - name: Disable package-lock.json
       run: npm config set package-lock false
-    - name: ADD CF Plugin
-      run: cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    
     - name: Install CF Plugin
       run: cf install-plugin multiapps
     - name: Build MTA
