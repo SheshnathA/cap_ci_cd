@@ -33,7 +33,7 @@ jobs:
         
   deploy:
      needs: build
-     runs-on: ubuntu-latest
+     runs-on: ubuntu-18.04
      steps:
        - name: Download Artifact
          uses: actions/download-artifact@master
