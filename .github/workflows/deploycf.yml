@@ -24,8 +24,7 @@ jobs:
     - name: Disable package-lock.json
       run: npm config set package-lock false
     
-    - name: Install CF Plugin
-      run: cf install-plugin multiapps
+    
     - name: Build MTA
       run: mbt build -p cf
       
@@ -45,6 +44,8 @@ jobs:
          with:
            name: mta
            path: ./
+       - name: Install CF Plugin
+         run: cf install-plugin multiapps
        - name: Deploy to Cloud Foundry
          uses: guerric-p/cf-cli-action@master
          with:
